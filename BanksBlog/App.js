@@ -18,6 +18,10 @@ import EuropeBanksScreen from './screens/EuropeBanksScreen';
 import UsaBankDetails from './screens/UsaBankDetailsScreen';
 import EuropBanksDetailsScreen from './screens/EuropBanksDetailsScreen';
 
+import Test from './screens/Test';
+
+import MapScreen from './screens/MapScreen';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +35,9 @@ const App = () => {
         <Stack.Screen name="USA Banks" component={UsaBanksScreen} />
         <Stack.Screen name="Euro Banks" component={EuropeBanksScreen} />
         <Stack.Screen name="USABANK DETAILS" component={UsaBankDetails} />
-        <Stack.Screen  name="EUROPE DETAILS" component={EuropBanksDetailsScreen} />
+        <Stack.Screen name="EUROPE DETAILS" component={EuropBanksDetailsScreen} />
+        <Stack.Screen name="Map" component={MapScreen} />
+         <Stack.Screen name="Test" component={Test}  />
       </Stack.Navigator>
       
     </NavigationContainer>

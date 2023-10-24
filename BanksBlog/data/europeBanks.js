@@ -2,6 +2,9 @@ export const europeBanks = [
     {
         id: 1,
         name: 'HSBC (United Kingdom)',
+        adress: 'HSBC London Bridge, 28 Borough High St, London SE1 1YB, Велика Британія',
+        latitude: 51.50470410632101,//широта
+        longitude: -0.09038944519417065,//довгота
         logo: require('../assets/HSBC(UnitedKingdom)(logo).png'),
         photo: require('../assets/HSBC(UnitedKingdom)(photo).jpeg'),
         description: `HSBC is one of the world's largest and most international banks, offering a wide range of financial services.`,
@@ -14,7 +17,11 @@ export const europeBanks = [
     {
         id: 2,
         name: 'Deutsche Bank (Germany)',
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Deutsche Bank Filiale, Promenadepl. 15, 80333 München, Німеччина',
+        latitude: 48.14024581044244,//широта , , 
+        longitude: 11.571876157148438,//довгота
+        logo: require('../assets/DB-logo.png'),
+        photo: require('../assets/DeutscheBank(Germany).jpeg') ,
         description: 'Deutsche Bank is a global investment bank and financial services company.',
         history: ` Deutsche Bank's history dates back to 1870 when it was founded to support international trade. Over the years, it has undergone significant changes and expansions, becoming a major player in investment banking, asset management, and financial services.`,
         servicesOffered: ` Investment banking, retail banking, asset management, and financial advisory services.`,
@@ -25,7 +32,10 @@ export const europeBanks = [
     {
         id: 3,
         name: 'BNP Paribas(France)',
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: '16 Bd des Italiens, 75009 Paris, France',
+        latitude: 48.8718357121688,//широта , , 
+        longitude: 2.337820930221418,//довгота
+        photo: require('../assets/BNP_Paribas(France).jpeg'),
         description: ` BNP Paribas is one of the largest banks in Europe, offering a wide range of financial services.`,
         history: ` BNP Paribas, founded in 1848, has a rich history in the world of banking.It has experienced growth through mergers and acquisitions, making it one of the largest banks in Europe.The bank's history reflects its commitment to serving a diverse clientele.`,
         servicesOffered: ` Retail banking, investment banking, asset management, and more.`,
@@ -36,7 +46,10 @@ export const europeBanks = [
     {
         id: 4,
         name: `Credit Suisse (Switzerland)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Credit Suisse Global Headquarters, Paradeplatz 8, 8001 Zürich, Switzerland',
+        latitude: 47.36970345504265, //широта , 
+        longitude: 8.53924566052917,//довгота
+        photo: require('../assets/CreditSuisse(Switzerland).jpeg'),
         description: ` Credit Suisse is a global financial services company known for its investment banking and wealth management services.`,
         history: ` Credit Suisse was founded in 1856 and has a long-standing history of providing financial services. It has its roots in Swiss banking and has expanded globally to serve a diverse range of clients. Over the years, Credit Suisse has been involved in significant financial developments and innovations.`,
         servicesOffered: ` Investment banking, private banking, and wealth management services.`,
@@ -47,7 +60,10 @@ export const europeBanks = [
     {
         id: 5,
         name: `Santander (Spain)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Banco Santander, Pl. del Príncipe, 2, 39003 Santander, Cantabria, Spain',
+        latitude: 43.514199261842705, //широта , , 
+        longitude: -3.7644546813871336,//довгота
+        photo: require('../assets/Santander(Spain).jpeg'),
         description: ` Santander is a major Spanish bank with a strong presence in Europe and beyond.`,
         history: ` Banco Santander, founded in 1857, has grown from its Spanish origins to become a global banking group. Its history is marked by expansion and internationalization, including acquisitions in Europe, the Americas, and beyond. It has played a pivotal role in the development of Spanish and international banking.`,
         servicesOffered: ` Retail banking, commercial banking, investment services, and more.`,
@@ -58,7 +74,10 @@ export const europeBanks = [
     {
         id: 6,
         name: `UniCredit (Italy)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'UniCredit, Corso Italia, 1, 20122 Milano MI, Italy',
+        latitude: 45.5516500061828, //широта ,  
+        longitude: 9.112231002468704,//довгота
+        photo: require('../assets/UniCredit(Italy).webp'),
         description: ` UniCredit is one of Italy's largest and most prominent banks, with a significant European presence.`,
         history: ` UniCredit, established in 1998, is the result of a merger between several Italian banking groups. Its history is intertwined with the consolidation of Italian banking and expansion across Europe. UniCredit has contributed to the development of European banking through its diverse services.`,
         servicesOffered: ` Retail and commercial banking, asset management, and investment services.`,
@@ -69,7 +88,10 @@ export const europeBanks = [
     {
         id: 7,
         name: `ING Group (Netherlands)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'ING Bank, Beethovenstraat 8, 1077 JG Amsterdam, Netherlands',
+        latitude: 52.33412173732264,  //широта , 
+        longitude: 4.911922594277279,//довгота
+        photo: require('../assets/ING_Group(Netherlands).jpeg'),
         description: ` ING Group is a Dutch multinational banking and financial services corporation with a strong European presence.`,
         history: ` ING Group's history traces back to the founding of the Nederlandsche Middenstandsbank in 1881. Over the years, it has undergone various mergers and expansions, leading to its current form as a global financial group with a strong European presence.`,
         servicesOffered: ` Retail and commercial banking, insurance, asset management, and investment services.`,
@@ -80,7 +102,10 @@ export const europeBanks = [
     {
         id: 8,
         name: ` Nordea Bank(Sweden)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Nordea, Dalvägen 22, 169 79 Solna, Sweden',
+        latitude: 59.36940835614036, //широта , , 
+        longitude: 18.001178556788915,//довгота
+        photo: require('../assets/NordeaBank(Sweden).jpeg'),
         description: ` Nordea is a leading Nordic financial group, offering a wide range of banking and financial services.`,
         history: ` Nordea Bank's history has roots in the founding of Christiania Bank in 1820, which was later merged with other banks to form Nordea. It has grown to become one of the largest financial groups in the Nordic and Baltic regions, contributing to the development of the financial sector in these areas.`,
         servicesOffered: ` Retail and corporate banking, asset management, and financial advisory services.`,
@@ -91,7 +116,10 @@ export const europeBanks = [
     {
         id: 9,
         name: `Raiffeisen Bank International(Austria)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Raiffeisen Bank International, Am Stadtpark 9, 1030 Wien, Austria',
+        latitude: 48.20484331349027, //широта ,  
+        longitude: 16.38369107266491,//довгота
+        photo: require('../assets/RaiffeisenBankInternational(Austria).jpeg'),
         description: ` Raiffeisen Bank International is a major Austrian banking group with a focus on Central and Eastern Europe.`,
         history: ` Raiffeisen Bank International was founded in 2010, consolidating various banking entities under a unified banner.It has established a significant presence in Central and Eastern Europe, contributing to the development of banking services in the region.`,
         servicesOffered: ` Retail and corporate banking, asset management, and financial services.`,
@@ -102,7 +130,10 @@ export const europeBanks = [
     {
         id: 10,
         name: ` Danske Bank(Denmark)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Danske Bank, Nørre Voldgade 68, 1165 København, Denmark',
+        latitude: 55.682354524776855, //широта ,  
+        longitude: 12.571348423684396,//довгота
+        photo: require('../assets/DanskeBank(Denmark).jpeg'),
         description: ` Danske Bank is a Danish banking group offering a variety of financial services in the Nordic and Baltic regions.`,
         history: ` Danske Bank's history dates back to 1871 when it was founded in Copenhagen. It has played a significant role in the development of Danish and Northern European banking. Over the years, it has expanded its services and reach.`,
         servicesOffered: ` Retail and corporate banking, asset management, and investment services.`,
@@ -113,7 +144,10 @@ export const europeBanks = [
     {
         id: 11,
         name: ` KBC Group(Belgium)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'KBC Brussels Bizet, Bergensesteenweg 1010, 1070 Anderlecht, Belgium',
+        latitude: 50.823903926606626, //широта ,  
+        longitude: 4.29587161921996,//довгота
+        photo: require('../assets/KBCGroup(Belgium).png'),
         description: ` KBC Group is a Belgian banking and insurance company with a strong presence in Belgium and Central Europe.`,
         history: ` KBC Group was founded in 1998 through a merger of several Belgian banking and insurance companies.It has grown to be a major player in banking, insurance, and financial services in Belgium and Central Europe.`,
         servicesOffered: ` Retail banking, insurance, asset management, and financial services.`,
@@ -124,7 +158,10 @@ export const europeBanks = [
     {
         id: 12,
         name: `Erste Group Bank(Austria)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Erste Group Bank AG, Am Belvedere 1, 1100 Wien, Austria',
+        latitude: 48.187438180641436, //широта ,  
+        longitude: 16.38080865299481,//довгота
+        photo: require('../assets/ErsteGroupBank(Austria).jpeg'),
         description: ` Erste Group Bank is one of the largest banking groups in Central and Eastern Europe.`,
         history: ` Erste Group Bank, established in 1819, has a long history in Central and Eastern Europe.It has played a crucial role in the development of financial services in the region, expanding its presence through mergers and acquisitions.`,
         servicesOffered: ` Retail and corporate banking, asset management, and financial services.`,
@@ -135,7 +172,10 @@ export const europeBanks = [
     {
         id: 13,
         name: `Société Générale(France)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Société Générale, 168 Bd Anatole France, 93200 Saint-Denis, France',
+        latitude: 48.920372188286144, //широта ,  
+        longitude: 2.343667469759147,//довгота
+        photo: require('../assets/SocieteGenerale(France).jpeg'),
         Description: ` Société Générale is a major French multinational banking and financial services company.`,
         history: ` Société Générale, founded in 1864, has a rich history in French banking and finance.The bank has played a significant role in the development of the French financial sector and has expanded its services internationally, serving a diverse range of clients.`,
         servicesOffered: ` Retail and corporate banking, asset management, and investment services.`,
@@ -146,7 +186,10 @@ export const europeBanks = [
     {
         id: 14,
         name: ` Credit Agricole(France)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Crédit Agricole Agence de Bordeaux Victoire, Place Victoire, Bordeaux, France',
+        latitude: 44.83130559563202, //широта , 
+        longitude:  -0.5735692711646712,//довгота
+        photo: require('../assets/CreditAgricole(France).jpeg'),
         description: ` Credit Agricole is a major French banking group with a significant presence in France and across Europe.`,
         history: ` Crédit Agricole, founded in 1894, has evolved into one of the largest banking groups in Europe.Its history is marked by growth through mergers and acquisitions, contributing to its status as a prominent banking institution in France and beyond.`,
         servicesOffered: ` Retail banking, insurance, asset management, and financial services.`,
@@ -157,7 +200,10 @@ export const europeBanks = [
     {
         id: 15,
         name: ` Banco Santander(Spain)`,
-        photo: '../assets/HSBC(UnitedKingdom)(photo).jpeg',
+        adress: 'Credit Suisse Global Headquarters, Paradeplatz 8, 8001 Zürich, Switzerland',
+        latitude: 43.46220024316378, //широта ,  
+        longitude: -3.8054985224942928,//довгота
+        photo: require('../assets/BancoSantander(Spain).jpeg'),
         description: ` Banco Santander is a Spanish banking group with a strong presence in Spain and worldwide.`,
         history: ` Banco Santander, founded in 1857, has grown from its Spanish origins to become a global banking group.Its history is marked by expansion and internationalization, including acquisitions in Europe, the Americas, and beyond.It has played a pivotal role in the development of Spanish and international banking.`,
         servicesOffered: ` Retail and corporate banking, asset management, and financial services.`,

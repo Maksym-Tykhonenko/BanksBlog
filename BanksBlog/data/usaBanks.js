@@ -2,6 +2,7 @@ export const usaBanks = [
     {
         id: 1,
         name: 'Bank of America',
+        photo: require('../assets/HSBC(UnitedKingdom)(photo).jpeg'),
         description: ' Bank of America is one of the largest and most recognized banks in the United States, offering a wide range of financial services to individuals and businesses.',
         history: ` Bank of America's history is marked by its mergers and acquisitions. It traces its roots to the Bank of Italy, founded in 1904 by Amadeo Giannini. Over the years, it acquired several banks, including NationsBank, FleetBoston Financial, and Merrill Lynch. These acquisitions contributed to its position as one of the largest banks in the United States.`,
         servicesOffered: ' Services include retail banking, wealth management, investment banking, and mortgage services.',

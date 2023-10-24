@@ -6,15 +6,16 @@ const UsaBanksScreen = ({ navigation }) => {
     
     return (
         <SafeAreaView>
-            <Text style={{fontWeight: 'bold'}}>USA Banks: </Text>
+            <Text style={{fontWeight: 'bold', fontSize: 20}}>USA Banks: </Text>
             <FlatList
                 data={usaBanks}
                 keyExtractor={item => item.id.toString()}
                 renderItem={({ item }) => (
                     <TouchableOpacity
+                        
                         onPress={() => navigation.navigate('USABANK DETAILS', { bankName: item.name })}
-                        style={{ padding: 10,  }}>
-                        <Text>-{item.name}</Text>
+                        style={{ padding: 10,  justifyContent: 'center', alignItems: 'baseline'  }}>
+                        <Text style={{ fontSize: 18 }}>-{item.name}</Text>
                     </TouchableOpacity>
                 )}
             />
