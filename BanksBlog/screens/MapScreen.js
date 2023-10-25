@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import MapView, { Marker, Circle } from 'react-native-maps';
+import { useNavigation } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-
-const MapScreen = ({route}) => {
+const MapScreen = ({route }) => {
     const {bankLatitude, bankLongitude} = route.params;
     console.log('bankLatitude', bankLatitude);
     console.log('bankLongitude', bankLongitude)
@@ -11,6 +12,7 @@ const MapScreen = ({route}) => {
     const [cordinates, setCordinates] = useState([{latitude: bankLatitude, longitude: bankLongitude,}]);
     
 
+    const navigation = useNavigation();
     //useEffect(() => {
     //    setLatitude(bankLatitude);
     //    setLongitude(bankLongitude);
@@ -20,7 +22,8 @@ const MapScreen = ({route}) => {
     //console.log('longitude', longitude)
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1 , position: 'relative'}}>
+            
             <View style={{ flex: 1 }}>
                 {cordinates.map(item => (
                     <MapView
@@ -52,12 +55,20 @@ const MapScreen = ({route}) => {
                     </MapView>
                 ))}
             </View>
-        </SafeAreaView>
+            <TouchableOpacity
+                onPress={()=> navigation.goBack()}
+                style={{
+                    position: 'absolute',
+                    bottom: 15,
+                    right: 15
+                }}
+            >
+                <Ionicons name='arrow-back-sharp' style={ {fontSize: 40}} />
+            </TouchableOpacity>
+        </View>
         
     );
 };
-{/**
-      latitude: 51.498453909230015,//широта
-                        longitude: -0.09593878537319506,//довгота 
-*/}
+
+
 export default MapScreen;

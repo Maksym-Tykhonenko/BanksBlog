@@ -18,7 +18,7 @@ import EuropeBanksScreen from './screens/EuropeBanksScreen';
 import UsaBankDetails from './screens/UsaBankDetailsScreen';
 import EuropBanksDetailsScreen from './screens/EuropBanksDetailsScreen';
 
-import Test from './screens/Test';
+import CreditCalculator from './screens/CreditCalculator';
 
 import MapScreen from './screens/MapScreen';
 
@@ -31,13 +31,13 @@ const App = () => {
     <NavigationContainer>
 
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="USA Banks" component={UsaBanksScreen} />
-        <Stack.Screen name="Euro Banks" component={EuropeBanksScreen} />
-        <Stack.Screen name="USABANK DETAILS" component={UsaBankDetails} />
-        <Stack.Screen name="EUROPE DETAILS" component={EuropBanksDetailsScreen} />
-        <Stack.Screen name="Map" component={MapScreen} />
-         <Stack.Screen name="Test" component={Test}  />
+        <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="USA Banks" component={UsaBanksScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Euro Banks" component={EuropeBanksScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="USABANK DETAILS" component={UsaBankDetails} />
+        <Stack.Screen options={{ headerShown: false }} name="EUROPE DETAILS" component={EuropBanksDetailsScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Map" component={MapScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="CreditCalculator" component={CreditCalculator} />
       </Stack.Navigator>
       
     </NavigationContainer>

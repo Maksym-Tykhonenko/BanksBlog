@@ -2,7 +2,7 @@ export const europeBanks = [
     {
         id: 1,
         name: 'HSBC (United Kingdom)',
-        adress: 'HSBC London Bridge, 28 Borough High St, London SE1 1YB, Велика Британія',
+        adress: 'HSBC London Bridge, 28 Borough High St, London SE1 1YB, United Kingdom',
         latitude: 51.50470410632101,//широта
         longitude: -0.09038944519417065,//довгота
         logo: require('../assets/HSBC(UnitedKingdom)(logo).png'),
@@ -17,7 +17,7 @@ export const europeBanks = [
     {
         id: 2,
         name: 'Deutsche Bank (Germany)',
-        adress: 'Deutsche Bank Filiale, Promenadepl. 15, 80333 München, Німеччина',
+        adress: 'Deutsche Bank Filiale, Promenadepl. 15, 80333 München, Germany',
         latitude: 48.14024581044244,//широта , , 
         longitude: 11.571876157148438,//довгота
         logo: require('../assets/DB-logo.png'),
@@ -61,8 +61,8 @@ export const europeBanks = [
         id: 5,
         name: `Santander (Spain)`,
         adress: 'Banco Santander, Pl. del Príncipe, 2, 39003 Santander, Cantabria, Spain',
-        latitude: 43.514199261842705, //широта , , 
-        longitude: -3.7644546813871336,//довгота
+        latitude: 43.462201009241895, //широта 
+        longitude: -3.805412886136329,//довгота
         photo: require('../assets/Santander(Spain).jpeg'),
         description: ` Santander is a major Spanish bank with a strong presence in Europe and beyond.`,
         history: ` Banco Santander, founded in 1857, has grown from its Spanish origins to become a global banking group. Its history is marked by expansion and internationalization, including acquisitions in Europe, the Americas, and beyond. It has played a pivotal role in the development of Spanish and international banking.`,
@@ -200,9 +200,9 @@ export const europeBanks = [
     {
         id: 15,
         name: ` Banco Santander(Spain)`,
-        adress: 'Credit Suisse Global Headquarters, Paradeplatz 8, 8001 Zürich, Switzerland',
-        latitude: 43.46220024316378, //широта ,  
-        longitude: -3.8054985224942928,//довгота
+        adress: 'Pl. de Legazpi, 1, 28045 Madrid, Spain',
+        latitude:  39.86368037550131,  //широта ,
+        longitude:  -4.023889132743399,//довгота
         photo: require('../assets/BancoSantander(Spain).jpeg'),
         description: ` Banco Santander is a Spanish banking group with a strong presence in Spain and worldwide.`,
         history: ` Banco Santander, founded in 1857, has grown from its Spanish origins to become a global banking group.Its history is marked by expansion and internationalization, including acquisitions in Europe, the Americas, and beyond.It has played a pivotal role in the development of Spanish and international banking.`,

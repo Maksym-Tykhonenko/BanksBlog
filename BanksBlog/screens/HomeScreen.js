@@ -1,36 +1,73 @@
 import React from "react";
-import { View, Text, TouchableOpacity, } from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image} from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen = ({navigation}) => {
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', position: 'relative', }}>
-            
-            <View style={{ marginTop: 20 }}>
-                <TouchableOpacity
-                    onPress={()=>navigation.navigate('USA Banks')}
-                    style={{justifyContent: 'center',alignItems: 'center', borderWidth: 1, borderRadius: 15, marginBottom: 10, width: 150, height: 70 }}>
-                    <Text style={{fontSize: 25}}>USA  <FontAwesome name="bank" style={{ color: '#000', fontSize: 40,  }} /></Text>
-                </TouchableOpacity>
+        <View style={styles.conteiner}>
+            <ImageBackground
+                style={styles.backgroundImg}
+                resizeMode='cover'
+                source={require('../assets/gameElement/backgr.png')}
+            >
+                <View style={{ marginTop: 20,paddingTop:250, alignItems: 'center',}}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('USA Banks')}
+                        style={{ marginBottom: 20 }}>
+                       <Image
+                            style={{ width: 220, height: 64, }}
+                            source={require('../assets/gameElement/USA.png')} />
+                    </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={()=>navigation.navigate('Euro Banks')}
-                    style={{justifyContent: 'center',alignItems: 'center', borderWidth: 1, borderRadius: 15,marginTop: 10, width: 150, height: 70 }}>
-                    <Text style={{fontSize: 25}}>Europe<FontAwesome name="bank" style={{ color: '#000', fontSize: 40 }} /></Text>
-                </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Euro Banks')}
+                        style={{  }}>
+                        
+                        <Image
+                            style={{ width: 220, height: 64, }}
+                            source={require('../assets/gameElement/Europe.png')} />
+                    </TouchableOpacity>
 
-                {/** calculator*/}
-                <TouchableOpacity
-                    onPress={()=>navigation.navigate('Test')}
-                    style={{justifyContent: 'center',alignItems: 'center', marginTop: 10, width: 120, height: 50, position: 'absolute', bottom: 300, left: 140 }}>
-                    <AntDesign name="calculator" style={{ color: '#000', fontSize: 40 }} />
-                </TouchableOpacity>
-                
-            </View>
+                     {/** calculator <Text style={{ fontSize: 25, color: 'yellow' }}>Europe</Text>
+                        <Text style={{ fontSize: 25, color: 'yellow' }}>USA  </Text>*/}
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('CreditCalculator')}
+                        style={styles.colculyator}>
+                        <AntDesign name="calculator" style={{ color: 'yellow', fontSize: 40 }} />
+                       
+                    </TouchableOpacity>
+                </View>
+            </ImageBackground>
         </View>
     );
 };
 
 export default HomeScreen;
+{/**
+<FontAwesome name="bank" style={{ color: 'yellow', fontSize: 40 }} />
+<FontAwesome name="bank" style={{ color: 'yellow', fontSize: 40, }} />
+*/}
+
+const styles = StyleSheet.create({
+    conteiner: {
+        flex: 1,
+        //backgroundColor: 'skyblue',
+        position: 'relative',
+    },
+    backgroundImg: {
+        flex: 1,
+        resizeMode: "cover",
+    
+    },
+    colculyator: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
+        position: 'absolute',
+        right: 20,
+        top: 20
+
+    }
+})
