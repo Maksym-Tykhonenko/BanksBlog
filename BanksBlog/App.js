@@ -17,8 +17,9 @@ import UsaBanksScreen from './screens/UsaBanksScree';
 import EuropeBanksScreen from './screens/EuropeBanksScreen';
 import UsaBankDetails from './screens/UsaBankDetailsScreen';
 import EuropBanksDetailsScreen from './screens/EuropBanksDetailsScreen';
-
+import BlogScreen from './screens/BlogScreen';
 import CreditCalculator from './screens/CreditCalculator';
+import AddBankDitailsScreen from './screens/AddBankDitailsScreen';
 
 import MapScreen from './screens/MapScreen';
 
@@ -38,7 +39,10 @@ const App = () => {
         <Stack.Screen options={{ headerShown: false }} name="EUROPE DETAILS" component={EuropBanksDetailsScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Map" component={MapScreen} />
         <Stack.Screen options={{ headerShown: false }} name="CreditCalculator" component={CreditCalculator} />
+        <Stack.Screen options={{ headerShown: false }} name="Blog" component={BlogScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="AddBankDitailsScreen" component={AddBankDitailsScreen} />
       </Stack.Navigator>
+
       
     </NavigationContainer>
     

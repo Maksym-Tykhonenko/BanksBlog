@@ -7,8 +7,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const UsaBankDetails = ({ route, navigation }) => {
 
-    const { bankName } = route.params;
-    console.log(bankName)
+    const { bankName, bank } = route.params;
+    console.log(bankName);
+    console.log('bank ==>', bank)
 
     const myRef = useRef();
 
@@ -18,53 +19,55 @@ const UsaBankDetails = ({ route, navigation }) => {
                 source={require('../assets/gameElement/backgr.png')}
                 style={styles.backgroundImg}
             >
-                {usaBanks.map((item) => {
+       {/**        {usaBanks.map((item) => {
                     if (bankName === item.name) {
-                        return (
+                        return (*/}  
                             <ScrollView
                                 style={{ marginTop: 30, marginBottom: 10 , marginHorizontal: 20}}
-                                key={item.id}
+                                //key={bank.id}
                             >
                                 <Text style={{ color: '#495B69', fontWeight: 'bold', fontSize: 25, marginBottom: 10 }}>
-                                    <Text style={{color: '#fff', fontSize: 25}}>Bank Name:</Text> {item.name}</Text>
+                                    <Text style={{color: '#fff', fontSize: 25}}>Bank Name:</Text> {bank.name}</Text>
 
                                 <View style={{ alignItems: 'center', justifyContent: 'center' , marginBottom: 10}}>
-                                    <Image style={{ height: 280, width: 280 }} source={item.photo} />
+                                    <Image style={{ height: 280, width: 280 }} source={bank.photo} />
                                 </View>
                             
 
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>Description</Text>
-                                    : {item.description}</Text>
+                                    : {bank.description}</Text>
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>History</Text>
-                                    : {item.history}</Text>
+                                    : {bank.history}</Text>
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>ServicesOffered</Text>
-                                    : {item.servicesOffered}</Text>
+                                    : {bank.servicesOffered}</Text>
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>Financial Performance</Text>
-                                    : {item.financialPerformance}</Text>
+                                    : {bank.financialPerformance}</Text>
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>Stock Exchange Information</Text>
-                                    : {item.stockExchangeInformation}</Text>
+                                    : {bank.stockExchangeInformation}</Text>
                                 <Text style={{fontSize:16, color: '#495B69', marginBottom: 10 }}>
                                     <Text style={{ fontWeight: 'bold',color:'#fff' }}>Ownership Structure</Text>
-                                    : {item.ownershipStructure}</Text>
+                                    : {bank.ownershipStructure}</Text>
+                                
+                                {/**BTN  navigation to map*/}
                                 <TouchableOpacity
-                                    onPress={() => navigation.navigate('Map', { bankLatitude: item.latitude, bankLongitude: item.longitude, ref: myRef })}
+                                    onPress={() => navigation.navigate('Map', { bankLatitude: bank.latitude, bankLongitude: bank.longitude, ref: myRef })}
                                 >
                                     <Text style={{fontSize:18, color: 'blue' }}>
                                         <EvilIcons name="location" style={{ color: '#FFA500', fontSize: 30 }} />
-                                        {item.adress}</Text>
+                                        {bank.adress}</Text>
                                 </TouchableOpacity>
                             </ScrollView>
-                        )
+      {/**                )
                     }
-                })}
+                })}*/}   
 
                 <TouchableOpacity
-                    onPress={()=>{navigation.navigate("Euro Banks")}}
+                    onPress={()=>{navigation.navigate("USA Banks")}}
                     style={{ alignItems: 'flex-end', marginRight: 10, marginBottom: 5 }}>
                     <Ionicons name='arrow-back-sharp' style={ {fontSize: 35}} />
                 </TouchableOpacity>

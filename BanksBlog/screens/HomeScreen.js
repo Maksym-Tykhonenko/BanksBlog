@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image} from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const HomeScreen = ({navigation}) => {
 
@@ -38,6 +38,13 @@ const HomeScreen = ({navigation}) => {
                         <AntDesign name="calculator" style={{ color: 'yellow', fontSize: 40 }} />
                        
                     </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Blog')}
+                        style={styles.blog}>
+                        <FontAwesome5 name="blog" style={{ color: 'yellow', fontSize: 35 }} />
+                       
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
         </View>
@@ -68,6 +75,15 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 20,
         top: 20
+
+    },
+     blog: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 10,
+        position: 'absolute',
+        right: 20,
+        top: 80
 
     }
 })
