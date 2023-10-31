@@ -85,6 +85,16 @@ const UsaBanksScreen = ({ navigation }) => {
         storeData()
     }, [banks]);
 
+    removeData = async () => {
+        try {
+            await AsyncStorage.removeItem('addBanks')
+        } catch (e) {
+            // remove error
+        }
+
+        console.log('Done.')
+    };
+
     const storeData = async () => {
         try {
             const jsonAddBanks = JSON.stringify(banks);
@@ -105,6 +115,16 @@ const UsaBanksScreen = ({ navigation }) => {
         }
     }
 
+    const [allData, setAllData] = useState();
+    useEffect(() => {
+        setAllData([...banks, ...usaBanks])
+    }, [banks]);
+
+    const hndlDelBanck = (id) => {
+        
+        const filteredData = allData.filter(item => item.id !== id);
+        setAllData(filteredData);
+    };
     
     return (
         <View style={styles.conteiner}>
@@ -114,12 +134,33 @@ const UsaBanksScreen = ({ navigation }) => {
             >
                
 
-               
                 <View style={styles.subConteiner}>
                     <Text style={{ fontWeight: 'bold', fontSize: 30, marginBottom: 30, color: '#fff' }}>USA Banks: </Text>
                     
+                    {/**allData list */}
+                     <FlatList
+                        data={allData}
+                        keyExtractor={item => item.id.toString()}
+                        renderItem={({ item }) => (
+
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('BankDitailScreen', { bank: item })}
+                                style={{...styles.bank, position: 'relative'}}>
+                                <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
+                                <TouchableOpacity
+                                    onPress={() => hndlDelBanck(item.id)}
+                                    activeOpacity={0.5}
+                                    style={{position: 'absolute', right: 5}}
+                                >
+                                    <AntDesign name='minuscircleo' style={{ fontSize: 20, color: 'red', }} />
+                                </TouchableOpacity>
+                            </TouchableOpacity>
+                                
+
+                        )}
+                    /> 
                    
-                    {/**List from JSON */}
+                    {/**List from JSON 
                     <FlatList
                         data={usaBanks}
                         keyExtractor={item => item.id.toString()}
@@ -130,9 +171,9 @@ const UsaBanksScreen = ({ navigation }) => {
                                 <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
                             </TouchableOpacity>
                         )}
-                    />
+                    />*/}
 
-                    {/**List add bank */}
+                    {/**List add bank 
                     <FlatList
                         data={banks}
                         keyExtractor={item => item.id.toString()}
@@ -146,20 +187,9 @@ const UsaBanksScreen = ({ navigation }) => {
                                 
 
                         )}
-                    />
+                    />*/}
 
-                    {/**BTN back */}
-                    <TouchableOpacity
-                        style={{
-                            alignItems: 'flex-end',
-                            position: 'absolute',
-                            top: 580,
-                            right: 5,
-                        }}
-                        onPress={() => navigation.navigate('Home')}
-                    >
-                        <Ionicons name='arrow-back-sharp' style={{ fontSize: 35 ,}} />
-                    </TouchableOpacity>
+                   
 
                     {/**BTN Modal open */}
                     <TouchableOpacity
@@ -174,9 +204,34 @@ const UsaBanksScreen = ({ navigation }) => {
                         <Ionicons name='add-circle-outline' style={{ fontSize: 35, color: 'yellow' }} />
                     </TouchableOpacity>
 
+                    {/** cлужебная кнопка ремув сторедж дата
+                    <TouchableOpacity
+                        style={{
+                            alignItems: 'flex-end',
+                            position: 'absolute',
+                            top: 55,
+                            right: 5,
+                        }}
+                        onPress={() => removeData()}
+                    >
+                        <Ionicons name='add-circle-outline' style={{ fontSize: 35, color: 'yellow' }} />
+                    </TouchableOpacity> */}
+
 
                 </View>
 
+                 {/**BTN back */}
+                    <TouchableOpacity
+                        style={{
+                            alignItems: 'flex-end',
+                            position: 'absolute',
+                            bottom: 10,
+                            right: 10,
+                        }}
+                        onPress={() => navigation.navigate('Home')}
+                    >
+                        <Ionicons name='arrow-back-sharp' style={{ fontSize: 35 ,}} />
+                    </TouchableOpacity>
 
                 {/**Modal */}
                 <Modal
@@ -188,7 +243,7 @@ const UsaBanksScreen = ({ navigation }) => {
                        <View style={styles.modalContainer}>
                         <ScrollView style={styles.modalContent}>
 
-                            <Text style={{ color: '#fff' }}> name</Text>
+                            <Text style={{ color: '#fff', fontSize: 18 }}> Banck name</Text>
                             <TextInput
                                 value={name}
                                 onChangeText={setNName}
@@ -198,7 +253,7 @@ const UsaBanksScreen = ({ navigation }) => {
                             <View>
                                 {!selectPhoto ? (<TouchableOpacity
                                     onPress={() => { ImagePicer() }}
-                                    style={{ marginTop: 0, marginBottom: 5 , borderWidth: 1, borderColor: 'yellow',borderRadius: 25, width: 150,height: 40,alignItems: 'center',justifyContent: 'center'}}
+                                    style={{ marginTop: 0, marginBottom: 5 ,marginLeft: 50, borderWidth: 1, borderColor: 'yellow',borderRadius: 25, width: 150,height: 40,alignItems: 'center',justifyContent: 'center'}}
                                 ><Text style={{color: 'yellow'}}>ADD PHOTO</Text>
                                     {/** <MaterialIcons name='add-photo-alternate' style={{ fontSize: 35, color: 'yellow' }} />*/ }
                                 </TouchableOpacity>) : (
@@ -210,7 +265,7 @@ const UsaBanksScreen = ({ navigation }) => {
                                             
                                         <TouchableOpacity
                                             onPress={() => { ImagePicer() }}
-                                            style={{  marginTop: 10 ,marginBottom: 30, position: 'absolute', right:5}}
+                                            style={{ position: 'absolute', right:5, top:5}}
                                         >
                                             <MaterialIcons name='change-circle' style={{ fontSize: 35, color: 'red' }} />
                                         </TouchableOpacity>
@@ -219,48 +274,48 @@ const UsaBanksScreen = ({ navigation }) => {
                                 
                             </View>
 
-                            <Text style={{ color: '#fff' }}> adress</Text>
+                            <Text style={{ color: '#fff', fontSize: 18  }}> Adress</Text>
                             <TextInput
                                 value={adress}
                                 onChangeText={setAdress}
                                 style={styles.input}
                             />
 
-                            <Text style={{ color: '#fff' }}> description</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> Description</Text>
                             <TextInput
                                 value={description}
                                 onChangeText={setDescription}
                                 style={styles.input}
                             />
 
-                            <Text style={{ color: '#fff' }}> history</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> History</Text>
                             <TextInput
                                 value={history}
                                 onChangeText={setHistory}
                                 style={styles.input}
                             />
 
-                            <Text style={{ color: '#fff' }}> servicesOffered</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> Services Offered</Text>
                             <TextInput
                                 value={servicesOffered}
                                 onChangeText={setServicesOffered}
                                 style={styles.input}
                             />
 
-                            <Text style={{ color: '#fff' }}> financialPerformance</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> Financial Performance</Text>
                             <TextInput
                                 value={financialPerformance}
                                 onChangeText={setFinancialPerformance}
                                 style={styles.input}
                             />
 
-                            <Text style={{ color: '#fff' }}> stockExchangeInformation</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> Stock Exchange Information</Text>
                             <TextInput
                                 value={stockExchangeInformation}
                                 onChangeText={setStockExchangeInformation}
                                 style={styles.input}
                             />
-                            <Text style={{ color: '#fff' }}> ownershipStructure</Text>
+                            <Text style={{ color: '#fff',fontSize: 18  }}> Ownership Structure</Text>
                             <TextInput
                                 value={ownershipStructure}
                                 onChangeText={setOwnershipStructure}
@@ -279,7 +334,7 @@ const UsaBanksScreen = ({ navigation }) => {
                             {/**BTN add back */}
                             <TouchableOpacity
                                 onPress={() => handlAddBank()}
-                                style={{ borderWidth: 1, borderColor: 'yellow', borderRadius: 25, width: 150,height: 40, marginTop: 10,alignItems: 'center',justifyContent: 'center' ,marginBottom:35}}
+                                style={{ marginLeft: 50,borderWidth: 1, borderColor: 'yellow', borderRadius: 25, width: 150,height: 40, marginTop: 10,alignItems: 'center',justifyContent: 'center' ,marginBottom:35}}
                             >
                                 <Text style={{ color: 'yellow' }}>ADD BANK</Text>
                             </TouchableOpacity>
@@ -308,7 +363,7 @@ const styles = StyleSheet.create({
         resizeMode: "cover",
     },
     subConteiner: {
-          marginTop: 40,
+        marginTop: 40,
         marginBottom: 10,
         alignItems: "center"
     },
@@ -328,8 +383,8 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         marginBottom: 10
     },
-      modal: {
-          position: 'relative',
+    modal: {
+        position: 'relative',
 
     },
     modalContainer: {
@@ -364,9 +419,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         color: '#fff',
         fontSize: 18,
-        backgroundColor:'rgba(0, 0, 0, 0.6)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
         marginBottom: 10,
-marginTop: 5
+        marginTop: 5
 
     },
 });

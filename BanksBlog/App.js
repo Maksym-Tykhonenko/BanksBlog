@@ -20,6 +20,9 @@ import EuropBanksDetailsScreen from './screens/EuropBanksDetailsScreen';
 import BlogScreen from './screens/BlogScreen';
 import CreditCalculator from './screens/CreditCalculator';
 import AddBankDitailsScreen from './screens/AddBankDitailsScreen';
+import NewsScreen from './screens/NewsScreen';
+import BankDitailScreen from './screens/BankDitailScreen';
+import WebViewNews from './screens/WebViewNews';
 
 import MapScreen from './screens/MapScreen';
 
@@ -41,6 +44,10 @@ const App = () => {
         <Stack.Screen options={{ headerShown: false }} name="CreditCalculator" component={CreditCalculator} />
         <Stack.Screen options={{ headerShown: false }} name="Blog" component={BlogScreen} />
         <Stack.Screen options={{ headerShown: false }} name="AddBankDitailsScreen" component={AddBankDitailsScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="News" component={NewsScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="BankDitailScreen" component={BankDitailScreen} />
+
+        <Stack.Screen options={{ headerShown: false }} name="WebViewNews" component={WebViewNews} />
       </Stack.Navigator>
 
       
@@ -48,5 +55,7 @@ const App = () => {
     
   );
 };
+
+
 
 export default App;

@@ -1,6 +1,6 @@
 export const usaBanks = [
     {
-        id: 1,
+        id: '1',
         name: 'Bank of America',
         adress: '100 North Tryon Street Charlotte, North Carolina 28255',
         latitude:  35.22738450856734,  //широта , 
@@ -14,7 +14,7 @@ export const usaBanks = [
         ownershipStructure: ' Publicly traded.',
     },
     {
-        id: 2,
+        id: '2',
         name: 'JPMorgan Chase & Co.',
         adress: '270 Park Avenue, New York, NY.',
         latitude:  40.75586551712297,   //широта ,
@@ -30,7 +30,7 @@ export const usaBanks = [
 
 
     {
-        id: 3,
+        id: '3',
         name: 'Wells Fargo & Co.',
         adress: '420 Montgomery Street San Francisco, CA 94104',
         latitude:  37.793357237251016,  //широта ,  
@@ -44,7 +44,7 @@ export const usaBanks = [
         ownershipStructure: 'Publicly traded.',
     },
     {
-        id: 4,
+        id: '4',
         name: 'Citibank',
         adress: 'Citi, 787 7th Ave, New York, NY 10019, USA',
         latitude:  40.761817993844424, //широта ,  
@@ -58,7 +58,7 @@ export const usaBanks = [
         ownershipStructure: 'Publicly traded.',
     },
     {
-        id: 5,
+        id: '5',
         name: 'Goldman Sachs',
         adress: 'Goldman Sachs & Co, 125 High St 1700, Boston, MA 02110, Сполучені Штати',
         latitude:  42.35552845305333,  //широта ,  
@@ -72,7 +72,7 @@ export const usaBanks = [
         ownershipStructure: ' Publicly traded.',
     },
     {
-        id: 6,
+        id: '6',
         name: 'Morgan Stanley',
         adress: '100 North Tryon Street Charlotte, North Carolina 28255',
         latitude:  40.70214637415246,  //широта ,  

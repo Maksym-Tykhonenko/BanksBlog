@@ -1,6 +1,6 @@
 export const europeBanks = [
     {
-        id: 1,
+        id: '1',
         name: 'HSBC (United Kingdom)',
         adress: 'HSBC London Bridge, 28 Borough High St, London SE1 1YB, United Kingdom',
         latitude: 51.50470410632101,//широта
@@ -15,7 +15,7 @@ export const europeBanks = [
         ownershipStructure: ' Publicly traded.',
     },
     {
-        id: 2,
+        id: '2',
         name: 'Deutsche Bank (Germany)',
         adress: 'Deutsche Bank Filiale, Promenadepl. 15, 80333 München, Germany',
         latitude: 48.14024581044244,//широта , , 
@@ -30,7 +30,7 @@ export const europeBanks = [
         ownershipStructure: ' Publicly traded.'
     },
     {
-        id: 3,
+        id: '3',
         name: 'BNP Paribas(France)',
         adress: '16 Bd des Italiens, 75009 Paris, France',
         latitude: 48.8718357121688,//широта , , 
@@ -44,7 +44,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 4,
+        id: '4',
         name: `Credit Suisse (Switzerland)`,
         adress: 'Credit Suisse Global Headquarters, Paradeplatz 8, 8001 Zürich, Switzerland',
         latitude: 47.36970345504265, //широта , 
@@ -58,7 +58,7 @@ export const europeBanks = [
         ownershipStructure: ' Publicly traded.',
     },
     {
-        id: 5,
+        id: '5',
         name: `Santander (Spain)`,
         adress: 'Banco Santander, Pl. del Príncipe, 2, 39003 Santander, Cantabria, Spain',
         latitude: 43.462201009241895, //широта 
@@ -72,7 +72,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`
     },
     {
-        id: 6,
+        id: '6',
         name: `UniCredit (Italy)`,
         adress: 'UniCredit, Corso Italia, 1, 20122 Milano MI, Italy',
         latitude: 45.5516500061828, //широта ,  
@@ -86,7 +86,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 7,
+        id: '7',
         name: `ING Group (Netherlands)`,
         adress: 'ING Bank, Beethovenstraat 8, 1077 JG Amsterdam, Netherlands',
         latitude: 52.33412173732264,  //широта , 
@@ -100,7 +100,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 8,
+        id: '8',
         name: ` Nordea Bank(Sweden)`,
         adress: 'Nordea, Dalvägen 22, 169 79 Solna, Sweden',
         latitude: 59.36940835614036, //широта , , 
@@ -114,7 +114,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 9,
+        id: '9',
         name: `Raiffeisen Bank International(Austria)`,
         adress: 'Raiffeisen Bank International, Am Stadtpark 9, 1030 Wien, Austria',
         latitude: 48.20484331349027, //широта ,  
@@ -128,7 +128,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`
     },
     {
-        id: 10,
+        id: '10',
         name: ` Danske Bank(Denmark)`,
         adress: 'Danske Bank, Nørre Voldgade 68, 1165 København, Denmark',
         latitude: 55.682354524776855, //широта ,  
@@ -142,7 +142,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`
     },
     {
-        id: 11,
+        id: '11',
         name: ` KBC Group(Belgium)`,
         adress: 'KBC Brussels Bizet, Bergensesteenweg 1010, 1070 Anderlecht, Belgium',
         latitude: 50.823903926606626, //широта ,  
@@ -156,7 +156,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 12,
+        id: '12',
         name: `Erste Group Bank(Austria)`,
         adress: 'Erste Group Bank AG, Am Belvedere 1, 1100 Wien, Austria',
         latitude: 48.187438180641436, //широта ,  
@@ -170,7 +170,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 13,
+        id: '13',
         name: `Société Générale(France)`,
         adress: 'Société Générale, 168 Bd Anatole France, 93200 Saint-Denis, France',
         latitude: 48.920372188286144, //широта ,  
@@ -184,7 +184,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 14,
+        id: '14',
         name: ` Credit Agricole(France)`,
         adress: 'Crédit Agricole Agence de Bordeaux Victoire, Place Victoire, Bordeaux, France',
         latitude: 44.83130559563202, //широта , 
@@ -198,7 +198,7 @@ export const europeBanks = [
         ownershipStructure: ` Publicly traded.`,
     },
     {
-        id: 15,
+        id: '15',
         name: ` Banco Santander(Spain)`,
         adress: 'Pl. de Legazpi, 1, 28045 Madrid, Spain',
         latitude:  39.86368037550131,  //широта ,

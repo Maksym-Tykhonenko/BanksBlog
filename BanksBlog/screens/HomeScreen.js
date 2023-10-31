@@ -1,7 +1,9 @@
 import React from "react";
-import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image} from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image } from "react-native";
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen = ({navigation}) => {
 
@@ -44,6 +46,19 @@ const HomeScreen = ({navigation}) => {
                         style={styles.blog}>
                         <FontAwesome5 name="blog" style={{ color: 'yellow', fontSize: 35 }} />
                        
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('News')}
+                        style={{ position: 'absolute',right: 20,top: 150}}>
+                        <FontAwesome name="newspaper-o" style={{ color: 'yellow', fontSize: 35 }} />
+                       
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('WebViewNews')}
+                        style={{ position: 'absolute', right: 20, top: 200 }}>
+                        <Text style={{ color: 'yellow', fontSize: 35 }}>O</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>

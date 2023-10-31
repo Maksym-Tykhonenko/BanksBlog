@@ -6,14 +6,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { useNavigation } from '@react-navigation/native';
 
-const AddBankDitailsScreen = ({ route,  }) => {
+const BankDitailScreen = ({ route }) => {
     const { bank } = route.params;
-    console.log('bank==> ', bank)
-    console.log('bankPhoto==> ', bank.photo)
-
+console.log('length',bank.id.length)
     const navigation = useNavigation();
 
-    //const {photo, name } = bank;
 
     return (
         <View style={styles.conteiner}>
@@ -31,8 +28,11 @@ const AddBankDitailsScreen = ({ route,  }) => {
                         <Text style={{ color: '#fff', fontSize: 25 }}>Bank Name:</Text> {bank.name}</Text>
 
                     <View style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
-                        <Image style={{ height: 280, width: 280 }}
-                            source={{ uri: bank.photo }} />
+                        {bank.id.length >= 2 ? (<Image style={{ height: 280, width: 280, borderWidth: 1,borderRadius: 10,borderColor: '#fff' }}
+                            source={{ uri: bank.photo }} />) : (
+                        <Image style={{ height: 280, width: 280 , borderRadius: 20, }} source={bank.photo} />
+                            )}
+                        
                     </View>
                             
 
@@ -83,7 +83,7 @@ const AddBankDitailsScreen = ({ route,  }) => {
     );
 };
 
-export default AddBankDitailsScreen;
+export default BankDitailScreen;
 
 const styles = StyleSheet.create({
     conteiner: {
