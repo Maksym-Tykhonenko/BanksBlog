@@ -51,6 +51,7 @@ const NewsScreen = ({ navigation }) => {
                             <Text style={{ fontSize: 14 ,color: 'grey'}}><Text style={{fontWeight:'bold'}}>Author: </Text>{item.author}</Text>
                             <Text style={{ fontSize: 20 , marginTop: 5,color: 'black' }}><Text style={{fontWeight:'bold'}}>Description: </Text>{item.description}</Text>
                             <Text style={{ fontSize: 20, marginTop: 5 ,color: 'black' }}><Text style={{fontWeight:'bold'}}>Content: </Text>{item.content}</Text>
+                            
                             <TouchableOpacity
                                  style={{ marginTop: 10 }}
                                 onPress={() => openFullArticle(item.url)}>

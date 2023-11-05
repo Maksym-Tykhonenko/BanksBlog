@@ -72,7 +72,7 @@ const EuropeBanksScreen = ({ navigation }) => {
             photo: selectPhoto,
         };
         console.log("new bank", newBank);
-        setBannks([...banks, newBank]);
+        setBannks([ newBank, ...banks]);
         hndlClearModal();
 
     };
@@ -118,7 +118,7 @@ const EuropeBanksScreen = ({ navigation }) => {
 
     const [allData, setAllData] = useState();
     useEffect(() => {
-        setAllData([...banks, ...europeBanks])
+        setAllData([...europeBanks, ...banks ])
     }, [banks]);
 
     const hndlDelBanck = (id) => {

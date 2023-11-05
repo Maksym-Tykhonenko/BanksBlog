@@ -114,7 +114,7 @@ const UsaBanksScreen = ({ navigation }) => {
             console.log(e)
         }
     }
-
+/////////////////////////////////////////////////
     const [allData, setAllData] = useState();
     useEffect(() => {
         setAllData([...banks, ...usaBanks])
