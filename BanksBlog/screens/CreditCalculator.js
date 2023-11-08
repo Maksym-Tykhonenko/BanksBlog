@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { KeyboardAvoidingView,View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground, ScrollView } from 'react-native';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -41,88 +41,95 @@ const CreditCalculator = ({navigation}) => {
                 style={styles.backgroundImg}
                 source={require('../assets/gameElement/backgr.png')}
             >
-                <View style={styles.subConteiner}>
-
-                    <View style={{ marginBottom: 20 }}>
-                        <Text style={styles.title}>LOAN AMOUNT <FontAwesome name="money" style={{ color: '#fff', fontSize: 30 }} /> :</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={loanAmount}
-                            onChangeText={text => setLoanAmount(text)}
-                            keyboardType="numeric"
-                        />
-                    </View>
-
-                    <View style={{ marginBottom: 20 }}>
-                        <Text style={styles.title}>ANNUAL INTEREST RATE (%):</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={annualInterestRate}
-                            onChangeText={text => setAnnualInterestRate(text)}
-                            keyboardType="numeric"
-                        />
-                    </View>
-
-                    <View style={{ marginBottom: 20 }}>
-                        <Text style={styles.title}>LOAN TERM (months):</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={loanTermMonths}
-                            onChangeText={text => setLoanTermMonths(text)}
-                            keyboardType="numeric"
-                        />
-                    </View>
-                    <View style={{ flex: 1, alignItems: 'center' }}>
-                        <TouchableOpacity
-                            style={{
-                                borderColor: 'red',
-                                borderWidth: 2,
-                                borderRadius: 10,
-                                width: 150,
-                                height: 45,
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginTop: 40,
-                                marginBottom: 40,
-                           
-                            }}
-                            onPress={calculateMonthlyPayment} >
-                            <LinearGradient
-                                style={styles.linearGradient}
-                                colors={['#FFFF00', '#FFA500', '#FF4500']}
-                            >
-                                <Text style={{ color: '#000', fontWeight: 'bold', paddingTop: 8, fontSize: 16, paddingLeft: 10 }}>To calculate</Text>
-                            </LinearGradient>
-                        
-                        </TouchableOpacity>
-                    </View>
-                    
-
-                    {monthlyPayment !== null && (<View style={{ marginTop: 100 }}>
-                        <Text style={styles.title}>MONTLY PAYMENT:
-                    
-                            <Text style={{ color: 'green', fontWeight: 'bold' }}> {monthlyPayment}</Text>
-                        </Text>
-                    </View>
-                    )}
-
-                   
-                </View>
-                <TouchableOpacity
-                    style={{
-                        
-                        position: 'absolute',
-                        bottom: 10,
-                        right: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}
-                    onPress={() => navigation.navigate('Home')}
+                <KeyboardAvoidingView
+                    style={{ flex: 1 }}
+                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 >
-                    <Ionicons name='arrow-back-sharp' style={{ color: '#000', fontSize: 35 }} />
-                        
-                </TouchableOpacity>
+                    <View style={styles.subConteiner}>
+                    <ScrollView>
 
+                        <View style={{ marginBottom: 20 }}>
+                            <Text style={styles.title}>LOAN AMOUNT <FontAwesome name="money" style={{ color: '#fff', fontSize: 30 }} /> :</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={loanAmount}
+                                onChangeText={text => setLoanAmount(text)}
+                                keyboardType="numeric"
+                            />
+                        </View>
+
+                        <View style={{ marginBottom: 20 }}>
+                            <Text style={styles.title}>ANNUAL INTEREST RATE (%):</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={annualInterestRate}
+                                onChangeText={text => setAnnualInterestRate(text)}
+                                keyboardType="numeric"
+                            />
+                        </View>
+
+                        <View style={{ marginBottom: 20 }}>
+                            <Text style={styles.title}>LOAN TERM (months):</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={loanTermMonths}
+                                onChangeText={text => setLoanTermMonths(text)}
+                                keyboardType="numeric"
+                            />
+                        </View>
+                        <View style={{ flex: 1, alignItems: 'center' }}>
+                            <TouchableOpacity
+                                style={{
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    borderRadius: 10,
+                                    width: 150,
+                                    height: 45,
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginTop: 40,
+                                    marginBottom: 40,
+                           
+                                }}
+                                onPress={calculateMonthlyPayment} >
+                                <LinearGradient
+                                    style={styles.linearGradient}
+                                    colors={['#FFFF00', '#FFA500', '#FF4500']}
+                                >
+                                    <Text style={{ color: '#000', fontWeight: 'bold', paddingTop: 8, fontSize: 16, paddingLeft: 10 }}>To calculate</Text>
+                                </LinearGradient>
+                        
+                            </TouchableOpacity>
+                        </View>
+                    
+
+                        {monthlyPayment !== null && (<View style={{ marginTop: 100 }}>
+                            <Text style={styles.title}>MONTLY PAYMENT:
+                    
+                                <Text style={{ color: 'green', fontWeight: 'bold' }}> {monthlyPayment}</Text>
+                            </Text>
+                        </View>
+                        )}
+
+                    </ScrollView>
+                
+                    </View>
+
+                    <TouchableOpacity
+                        style={{
+                        
+                            position: 'absolute',
+                            bottom: 10,
+                            right: 10,
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}
+                        onPress={() => navigation.navigate('Home')}
+                    >
+                        <Ionicons name='arrow-back-sharp' style={{ color: '#000', fontSize: 35 }} />
+                        
+                    </TouchableOpacity>
+                </KeyboardAvoidingView>
             </ImageBackground>
 
           

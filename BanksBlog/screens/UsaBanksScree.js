@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, ImageBackground, View, Text, SafeAreaView, FlatList, TouchableOpacity, Modal, TextInput, ScrollView, Alert, Image } from "react-native";
+import { KeyboardAvoidingView,StyleSheet, ImageBackground, View, Text, SafeAreaView, FlatList, TouchableOpacity, Modal, TextInput, ScrollView, Alert, Image } from "react-native";
 import { usaBanks } from '../data/usaBanks';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -36,8 +36,12 @@ const UsaBanksScreen = ({ navigation }) => {
         };
         
         launchImageLibrary(options, response => {
-            console.log(response.assets[0].uri);
-            setSelectPhoto(response.assets[0].uri)
+             if (!response.didCancel) {
+                console.log('response==>', response.assets[0].uri);
+                setSelectPhoto(response.assets[0].uri)
+            } else {
+                console.log('Вибір скасовано');
+            }
         })
     };
 
@@ -138,19 +142,19 @@ const UsaBanksScreen = ({ navigation }) => {
                     <Text style={{ fontWeight: 'bold', fontSize: 30, marginBottom: 30, color: '#fff' }}>USA Banks: </Text>
                     
                     {/**allData list */}
-                     <FlatList
+                    <FlatList
                         data={allData}
                         keyExtractor={item => item.id.toString()}
                         renderItem={({ item }) => (
 
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('BankDitailScreen', { bank: item })}
-                                style={{...styles.bank, position: 'relative'}}>
+                                style={{ ...styles.bank, position: 'relative' }}>
                                 <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
                                 <TouchableOpacity
                                     onPress={() => hndlDelBanck(item.id)}
                                     activeOpacity={0.5}
-                                    style={{position: 'absolute', right: 5}}
+                                    style={{ position: 'absolute', right: 5 }}
                                 >
                                     <AntDesign name='minuscircleo' style={{ fontSize: 20, color: 'red', }} />
                                 </TouchableOpacity>
@@ -158,37 +162,8 @@ const UsaBanksScreen = ({ navigation }) => {
                                 
 
                         )}
-                    /> 
-                   
-                    {/**List from JSON 
-                    <FlatList
-                        data={usaBanks}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({ item }) => (
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('USABANK DETAILS', { bankName: item.name, bank: item })}
-                                style={styles.bank}>
-                                <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
-                            </TouchableOpacity>
-                        )}
-                    />*/}
-
-                    {/**List add bank 
-                    <FlatList
-                        data={banks}
-                        keyExtractor={item => item.id.toString()}
-                        renderItem={({ item }) => (
-
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('AddBankDitailsScreen', { bank: item })}
-                                style={styles.bank}>
-                                <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
-                                </TouchableOpacity>
-                                
-
-                        )}
-                    />*/}
-
+                    />
+                
                    
 
                     {/**BTN Modal open */}
@@ -220,18 +195,18 @@ const UsaBanksScreen = ({ navigation }) => {
 
                 </View>
 
-                 {/**BTN back */}
-                    <TouchableOpacity
-                        style={{
-                            alignItems: 'flex-end',
-                            position: 'absolute',
-                            bottom: 10,
-                            right: 10,
-                        }}
-                        onPress={() => navigation.navigate('Home')}
-                    >
-                        <Ionicons name='arrow-back-sharp' style={{ fontSize: 35 ,}} />
-                    </TouchableOpacity>
+                {/**BTN back */}
+                <TouchableOpacity
+                    style={{
+                        alignItems: 'flex-end',
+                        position: 'absolute',
+                        bottom: 10,
+                        right: 10,
+                    }}
+                    onPress={() => navigation.navigate('Home')}
+                >
+                    <Ionicons name='arrow-back-sharp' style={{ fontSize: 35, }} />
+                </TouchableOpacity>
 
                 {/**Modal */}
                 <Modal
@@ -240,104 +215,109 @@ const UsaBanksScreen = ({ navigation }) => {
                     transparent={true}
                 >
                     
-                       <View style={styles.modalContainer}>
+                    <View style={styles.modalContainer}>
                         <ScrollView style={styles.modalContent}>
+                            <KeyboardAvoidingView
+                                style={{ flex: 1 }}
+                                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                            >
 
-                            <Text style={{ color: '#fff', fontSize: 18 }}> Banck name</Text>
-                            <TextInput
-                                value={name}
-                                onChangeText={setNName}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Banck name</Text>
+                                <TextInput
+                                    value={name}
+                                    onChangeText={setNName}
+                                    style={styles.input}
+                                />
 
-                            <View>
-                                {!selectPhoto ? (<TouchableOpacity
-                                    onPress={() => { ImagePicer() }}
-                                    style={{ marginTop: 0, marginBottom: 5 ,marginLeft: 50, borderWidth: 1, borderColor: 'yellow',borderRadius: 25, width: 150,height: 40,alignItems: 'center',justifyContent: 'center'}}
-                                ><Text style={{color: 'yellow'}}>ADD PHOTO</Text>
-                                    {/** <MaterialIcons name='add-photo-alternate' style={{ fontSize: 35, color: 'yellow' }} />*/ }
-                                </TouchableOpacity>) : (
-                                    <View style={{  width: '100%', position: 'relative'}}>
-                                        <Image
-                                            source={{ uri: selectPhoto }}
-                                            style={{ height: 400, width: '100%' }}
+                                <View>
+                                    {!selectPhoto ? (<TouchableOpacity
+                                        onPress={() => { ImagePicer() }}
+                                        style={{ marginTop: 0, marginBottom: 5, marginLeft: 50, borderWidth: 1, borderColor: 'yellow', borderRadius: 25, width: 150, height: 40, alignItems: 'center', justifyContent: 'center' }}
+                                    ><Text style={{ color: 'yellow' }}>ADD PHOTO</Text>
+                                        {/** <MaterialIcons name='add-photo-alternate' style={{ fontSize: 35, color: 'yellow' }} />*/}
+                                    </TouchableOpacity>) : (
+                                        <View style={{ width: '100%', position: 'relative' }}>
+                                            <Image
+                                                source={{ uri: selectPhoto }}
+                                                style={{ height: 400, width: '100%' }}
                                             />
                                             
-                                        <TouchableOpacity
-                                            onPress={() => { ImagePicer() }}
-                                            style={{ position: 'absolute', right:5, top:5}}
-                                        >
-                                            <MaterialIcons name='change-circle' style={{ fontSize: 35, color: 'red' }} />
-                                        </TouchableOpacity>
-                                    </View>
-                                )}
+                                            <TouchableOpacity
+                                                onPress={() => { ImagePicer() }}
+                                                style={{ position: 'absolute', right: 5, top: 5 }}
+                                            >
+                                                <MaterialIcons name='change-circle' style={{ fontSize: 35, color: 'red' }} />
+                                            </TouchableOpacity>
+                                        </View>
+                                    )}
                                 
-                            </View>
+                                </View>
 
-                            <Text style={{ color: '#fff', fontSize: 18  }}> Adress</Text>
-                            <TextInput
-                                value={adress}
-                                onChangeText={setAdress}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Adress</Text>
+                                <TextInput
+                                    value={adress}
+                                    onChangeText={setAdress}
+                                    style={styles.input}
+                                />
 
-                            <Text style={{ color: '#fff',fontSize: 18  }}> Description</Text>
-                            <TextInput
-                                value={description}
-                                onChangeText={setDescription}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Description</Text>
+                                <TextInput
+                                    value={description}
+                                    onChangeText={setDescription}
+                                    style={styles.input}
+                                />
 
-                            <Text style={{ color: '#fff',fontSize: 18  }}> History</Text>
-                            <TextInput
-                                value={history}
-                                onChangeText={setHistory}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> History</Text>
+                                <TextInput
+                                    value={history}
+                                    onChangeText={setHistory}
+                                    style={styles.input}
+                                />
 
-                            <Text style={{ color: '#fff',fontSize: 18  }}> Services Offered</Text>
-                            <TextInput
-                                value={servicesOffered}
-                                onChangeText={setServicesOffered}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Services Offered</Text>
+                                <TextInput
+                                    value={servicesOffered}
+                                    onChangeText={setServicesOffered}
+                                    style={styles.input}
+                                />
 
-                            <Text style={{ color: '#fff',fontSize: 18  }}> Financial Performance</Text>
-                            <TextInput
-                                value={financialPerformance}
-                                onChangeText={setFinancialPerformance}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Financial Performance</Text>
+                                <TextInput
+                                    value={financialPerformance}
+                                    onChangeText={setFinancialPerformance}
+                                    style={styles.input}
+                                />
 
-                            <Text style={{ color: '#fff',fontSize: 18  }}> Stock Exchange Information</Text>
-                            <TextInput
-                                value={stockExchangeInformation}
-                                onChangeText={setStockExchangeInformation}
-                                style={styles.input}
-                            />
-                            <Text style={{ color: '#fff',fontSize: 18  }}> Ownership Structure</Text>
-                            <TextInput
-                                value={ownershipStructure}
-                                onChangeText={setOwnershipStructure}
-                                style={styles.input}
-                            />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Stock Exchange Information</Text>
+                                <TextInput
+                                    value={stockExchangeInformation}
+                                    onChangeText={setStockExchangeInformation}
+                                    style={styles.input}
+                                />
+                                <Text style={{ color: '#fff', fontSize: 18 }}> Ownership Structure</Text>
+                                <TextInput
+                                    value={ownershipStructure}
+                                    onChangeText={setOwnershipStructure}
+                                    style={styles.input}
+                                />
 
                            
-                            {/**BTN close modal */}
-                            <TouchableOpacity
-                                onPress={() => hndlClearModal()}
-                                style={{ position: 'absolute', top: 0, right: 0 }}
-                            >
-                                <AntDesign name='closecircle' style={{ fontSize: 30, color: 'red' }} />
-                            </TouchableOpacity>
+                                {/**BTN close modal */}
+                                <TouchableOpacity
+                                    onPress={() => hndlClearModal()}
+                                    style={{ position: 'absolute', top: 0, right: 0 }}
+                                >
+                                    <AntDesign name='closecircle' style={{ fontSize: 30, color: 'red' }} />
+                                </TouchableOpacity>
 
-                            {/**BTN add back */}
-                            <TouchableOpacity
-                                onPress={() => handlAddBank()}
-                                style={{ marginLeft: 50,borderWidth: 1, borderColor: 'yellow', borderRadius: 25, width: 150,height: 40, marginTop: 10,alignItems: 'center',justifyContent: 'center' ,marginBottom:35}}
-                            >
-                                <Text style={{ color: 'yellow' }}>ADD BANK</Text>
-                            </TouchableOpacity>
+                                {/**BTN add back */}
+                                <TouchableOpacity
+                                    onPress={() => handlAddBank()}
+                                    style={{ marginLeft: 50, borderWidth: 1, borderColor: 'yellow', borderRadius: 25, width: 150, height: 40, marginTop: 10, alignItems: 'center', justifyContent: 'center', marginBottom: 35 }}
+                                >
+                                    <Text style={{ color: 'yellow' }}>ADD BANK</Text>
+                                </TouchableOpacity>
+                            </KeyboardAvoidingView>
                         </ScrollView>
                         
                         
@@ -389,6 +369,8 @@ const styles = StyleSheet.create({
     },
     modalContainer: {
         flex: 1,
+        marginTop: 35,
+        marginBottom: 15,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.4)', // Півпрозорий фон

@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import { TextInput, View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image, Modal, ScrollView } from "react-native";
+import { KeyboardAvoidingView,TextInput, View, Text, TouchableOpacity, ImageBackground, StyleSheet, Image, Modal, ScrollView, SafeAreaView } from "react-native";
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -22,6 +22,8 @@ const HomeScreen = ({ navigation }) => {
     const [selectedData, setSelectedData] = useState('');
     const [bankName, setBankName] = useState('');
     const [address, setAddress] = useState('');
+    const [bankNotes, setBankNotes] = useState('')
+    console.log('bankNotes==>', bankNotes)
 
     const [info, setInfo] = useState('');
     console.log('info==>', info);
@@ -42,7 +44,7 @@ const HomeScreen = ({ navigation }) => {
                 const data = {
                     username,
                     info,
-                    photo
+                    photo,
                 };
 
                 const jsonData = JSON.stringify(data);
@@ -77,6 +79,7 @@ const HomeScreen = ({ navigation }) => {
             bankName,
             address,
             selectedData,
+            bankNotes,
             id: uid(),
         };
 
@@ -84,6 +87,7 @@ const HomeScreen = ({ navigation }) => {
         setIsFormAddBankVisible(!isFormAddBankVisible);
         setAddress('');
         setBankName('');
+        setBankNotes('');
     }
 
     const ImagePicer = () => {
@@ -94,9 +98,12 @@ const HomeScreen = ({ navigation }) => {
         };
         
         launchImageLibrary(options, response => {
-            //console.log('response==>', response.assets[0].uri);
-            setPhoto(response.assets[0].uri)
-        })
+          if (!response.didCancel) {
+                console.log('response==>', response.assets[0].uri);
+                setPhoto(response.assets[0].uri)
+            } else {
+                console.log('Вибір скасовано');
+            }})
     };
 
     return (
@@ -168,124 +175,145 @@ const HomeScreen = ({ navigation }) => {
                         transparent={false}
                         visible={isModalVisible}
                     >
-                        <View style={{ position: 'relative', flex: 1, paddingTop: 30, paddingHorizontal: 10 , backgroundColor: '#000'}}>
+                        <SafeAreaView style={{ position: 'relative', flex: 1, paddingTop: 30, paddingHorizontal: 10, backgroundColor: '#000' }}>
                             <ScrollView>
-                           
+                                <KeyboardAvoidingView
+                                    style={{ flex: 1 }}
+                                    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                                >
                                 
-                                <View>
+                                    <View>
  
-                                    {!username ? (
-                                        <View><Text style={{marginLeft: 5,marginBottom: 10,fontWeight: 'bold',fontSize: 25, color:'#fff'}}>Tipe name :</Text>
-                                            <TextInput
-                                                value={writingUsername}
-                                                onChangeText={setWritingUsername}
-                                                style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1,borderColor: '#fff',color:'#fff', borderRadius: 10, width: 200, height: 40 }}
-                                            />
-                                            <TouchableOpacity
-                                                style={{borderWidth: 3,borderColor: '#FFA500', borderRadius:10, width:150, height: 40,justifyContent: 'center',alignItems: 'center'}}
-                                                onPress={() => setUsername(writingUsername)}
-                                            >
-                                                <View>
-                                                    <Text style={{fontSize: 25, color:'#fff'}}>Save name</Text>
-                                                </View>
+                                        {!username ? (
+                                            <View><Text style={{ marginLeft: 5, marginBottom: 10, fontWeight: 'bold', fontSize: 25, color: '#fff' }}>Tipe name :</Text>
+                                                <TextInput
+                                                    value={writingUsername}
+                                                    onChangeText={setWritingUsername}
+                                                    style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1, borderColor: '#fff', color: '#fff', borderRadius: 10, width: 200, height: 40 }}
+                                                />
+                                                <TouchableOpacity
+                                                    style={{ borderWidth: 3, borderColor: '#FFA500', borderRadius: 10, width: 150, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                                                    onPress={() => setUsername(writingUsername)}
+                                                >
+                                                    <View>
+                                                        <Text style={{ fontSize: 25, color: '#fff' }}>Save name</Text>
+                                                    </View>
                                             
-                                            </TouchableOpacity></View>
-                                    ) : (
-                                        <Text style={{marginLeft: 10,marginBottom: 10,fontSize: 35, fontWeight: 'bold', color:'#fff'}}>{username}</Text>
-                                    )}
+                                                </TouchableOpacity></View>
+                                        ) : (
+                                            <Text style={{ marginLeft: 10, marginBottom: 10, fontSize: 35, fontWeight: 'bold', color: '#fff' }}>{username}</Text>
+                                        )}
                                     
-                                </View>
+                                    </View>
                             
-                                <View style={{}}>
-                                    {!photo ? (<TouchableOpacity
-                                        onPress={() => ImagePicer()}
-                                        style={{ alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderRadius: 10,borderColor:'#FFA500', width: 150, height: 40, marginBottom: 20 ,marginTop: 20}}>
-                                        <Text style={{fontSize: 25,color:'#fff'}}>Add Photo</Text>
-                                    </TouchableOpacity>) : (
-                                        <Image
-                                            style={{ width: 150, height: 150, borderRadius: 10, marginBottom: 20 }}
-                                            source={{ uri: photo }} />
-                                    )}
+                                    <View style={{}}>
+                                        {!photo ? (<TouchableOpacity
+                                            onPress={() => ImagePicer()}
+                                            style={{ alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderRadius: 10, borderColor: '#FFA500', width: 150, height: 40, marginBottom: 20, marginTop: 20 }}>
+                                            <Text style={{ fontSize: 25, color: '#fff' }}>Add Photo</Text>
+                                        </TouchableOpacity>) : (
+                                            <Image
+                                                style={{ width: 150, height: 150, borderRadius: 10, marginBottom: 20 }}
+                                                source={{ uri: photo }} />
+                                        )}
                             
-                                </View>
+                                    </View>
                             
-                                {isFormAddBankVisible ? (
-                                    <View style={{ marginBottom: 30 }}>
+                                    {isFormAddBankVisible ? (
+                                        <View style={{ marginBottom: 30 }}>
 
                                    
-                                        <TextInput
-                                            placeholder='Bank Name'
-                                            value={bankName}
-                                            onChangeText={setBankName}
-                                            style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1,borderColor: '#fff',color:'#fff', borderRadius: 10, width: 200, height: 40 }}
-                                        />
-                                        <TextInput
-                                            placeholder="Address"
-                                            value={address}
-                                            onChangeText={setAddress}
-                                            style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1, borderRadius: 10,borderColor: '#fff',color:'#fff', width: 200, height: 40 }}
-                                        />
-
-                                        
-                                        {/**Caledar */}
-                                        <Calendar
-                                            onDayPress={day => {
-                                                setSelectedData(day.dateString);
-                                            }}
-                                            markedDates={{
-                                                [selectedData]: { selectedData: true, disableTouchEvent: true, selectedDotColor: 'orange' }
-                                            }}
-                                        />
+                                            <View>
+                                                <Text style={{color: '#fff',fontSize: 20, marginBottom: 5}}>Bank Name</Text>
+                                            <TextInput
+                                                placeholder='Bank Name'
+                                                value={bankName}
+                                                onChangeText={setBankName}
+                                                style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1, borderColor: '#fff', color: '#fff', borderRadius: 10, width: 200, height: 40 }}
+                                            />
+                                            </View>
+                                            
+                                            <View>
+                                                <Text style={{color: '#fff',fontSize: 20, marginBottom: 5}}>Address</Text>
+                                            <TextInput
+                                                placeholder="Address"
+                                                value={address}
+                                                onChangeText={setAddress}
+                                                style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1, borderRadius: 10, borderColor: '#fff', color: '#fff', width: 200, height: 40 }}
+                                            />
+                                            </View>
+                                            
+                                            <View>
+                                                <Text style={{color: '#fff',fontSize: 20, marginBottom: 5}}>Your notes about this bank</Text>
+                                            <TextInput
+                                                placeholder="Notes"
+                                                value={bankNotes}
+                                                    onChangeText={setBankNotes}
+                                                    multiline={true}
+                                                style={{ marginBottom: 15, paddingLeft: 10, fontSize: 20, borderWidth: 1, borderRadius: 10, borderColor: '#fff', color: '#fff', width: 200, height: 40 }}
+                                            />
+                                        </View>
+                                            {/**Caledar */}
+                                            <Calendar
+                                                style={{borderRadius: 10}}
+                                                onDayPress={day => {
+                                                    setSelectedData(day.dateString);
+                                                }}
+                                                markedDates={{
+                                                    [selectedData]: { selectedData: true, disableTouchEvent: true, selectedDotColor: 'orange' }
+                                                }}
+                                            />
                                     
-                                        <TouchableOpacity
-                                            style={{ borderWidth: 1, borderRadius: 10,borderColor:'#fff', width: 100, height: 40, alignItems: 'center', justifyContent: 'center' , marginTop: 15}}
-                                            onPress={() => selectBankWherIBeen()
+                                            <TouchableOpacity
+                                                style={{ borderWidth: 1, borderRadius: 10, borderColor: '#fff', width: 100, height: 40, alignItems: 'center', justifyContent: 'center', marginTop: 15 }}
+                                                onPress={() => selectBankWherIBeen()
                                                 
-                                            }
+                                                }
+                                            >
+                                                <Text style={{ color: '#fff', fontWeight: 'bold' }}>ADD</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    ) : (
+                                        <TouchableOpacity
+                                            style={{ marginBottom: 10, borderWidth: 3, borderColor: '#FFA500', borderRadius: 5, width: 280, height: 40, justifyContent: 'center', alignItems: 'center' }}
+                                            onPress={() => setIsFormAddBankVisible(!isFormAddBankVisible)}
                                         >
-                                            <Text style={{color:'#fff', fontWeight:'bold'}}>ADD</Text>
+                                            <Text style={{ fontWeight: 'bold', color: '#fff' }}>Add bank which I have been visited <AntDesign name="arrowdown" style={{ color: '#fff', fontSize: 20, }} /></Text>
                                         </TouchableOpacity>
-                                    </View>
-                                ) : (
-                                    <TouchableOpacity
-                                        style={{ marginBottom: 10 , borderWidth: 3, borderColor: '#FFA500', borderRadius: 5, width: 280, height:40, justifyContent: 'center', alignItems: 'center'}}
-                                        onPress={() => setIsFormAddBankVisible(!isFormAddBankVisible)}
-                                    >
-                                        <Text style={{fontWeight: 'bold', color:'#fff'}}>Add bank which I have been visited <AntDesign name="arrowdown" style={{ color: '#fff', fontSize: 20 , }} /></Text>
-                                    </TouchableOpacity>
-                                )}
+                                    )}
                            
-                                {info ? (
-                                    <View>
-                                        {info.map((item) => {
-                                            return (
-                                                <View
-                                                    style={{ marginBottom: 20 }}
-                                                    key={item.id}>
-                                                    <Text style={{marginLeft:5, fontSize:14, color:'#808080'}}>{item.selectedData}</Text>
-                                                    <Text style={{ fontSize:18, color:'#fff'}}>Bank Name :<Text style={{fontWeight: 'bold'}}> {item.bankName}</Text></Text>
-                                                    <Text style={{ fontSize:18, color:'#fff'}}>Address :<Text style={{fontWeight: 'bold'}}>{item.address}</Text></Text>
-                                                </View>
-                                            )
-                                        })}
-                                    </View>
-                                ) : (
-                                    <View></View>
-                                )}
-                            
+                                    {info ? (
+                                        <View>
+                                            {info.map((item) => {
+                                                return (
+                                                    <View
+                                                        style={{ marginBottom: 20 }}
+                                                        key={item.id}>
+                                                        <Text style={{ marginLeft: 5, fontSize: 14, color: '#808080' }}>{item.selectedData}</Text>
+                                                        <Text style={{ fontSize: 18, color: '#fff' }}>Bank Name :<Text style={{ fontWeight: 'bold' }}> {item.bankName}</Text></Text>
+                                                        <Text style={{ fontSize: 18, color: '#fff' }}>Address :<Text style={{ fontWeight: 'bold' }}>{item.address}</Text></Text>
+                                                        <Text style={{ fontSize: 18, color: '#fff' }}>Notes :<Text style={{ fontWeight: 'bold' }}>{item.bankNotes}</Text></Text>
+                                                    </View>
+                                                )
+                                            })}
+                                        </View>
+                                    ) : (
+                                        <View></View>
+                                    )}
+                                </KeyboardAvoidingView>
 
                             </ScrollView>
 
 
 
                             <TouchableOpacity
-                                style={{ position: 'absolute', right: 20, top: 20 }}
+                                style={{ position: 'absolute', right: 20, top: 40 }}
                                 onPress={() => setIsModalVisible(false)}
                             >
-                                <AntDesign name='closecircleo' style={{fontSize: 30, color: '#fff'}} />
+                                <AntDesign name='closecircleo' style={{ fontSize: 30, color: '#fff' }} />
                             </TouchableOpacity>
 
-                        </View>
+                        </SafeAreaView>
                     </Modal>
                     
 

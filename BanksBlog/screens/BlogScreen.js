@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from "react";
-import { View, Text, StyleSheet,TextInput,TouchableOpacity, Modal, Pressable, SafeAreaView, FlatList, ScrollView, ImageBackground, } from "react-native";
+import {KeyboardAvoidingView, View, Text, StyleSheet,TextInput,TouchableOpacity, Modal, Pressable, SafeAreaView, FlatList, ScrollView, ImageBackground, } from "react-native";
 
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -84,18 +84,18 @@ const BlogScreen = ({navigation}) => {
                 
                 <View style={styles.subconteiner}>
                  
-                     <ScrollView style={{ marginLeft: 25 }}>
+                    <ScrollView style={{ marginLeft: 25 }}>
                         {data.map((item) => {
                             return (<View
                                 style={styles.bankInfo}
                                 key={item.id}>
-                                <View style={{ alignItems: 'flex-end', marginBottom: 3}}>
+                                <View style={{ alignItems: 'flex-end', marginBottom: 3 }}>
                                     <TouchableOpacity
-                                    style={styles.delBankBtn}
-                                    onPress={() => {handlBankDel(item.name)}}
-                                >
-                                    <AntDesign name="delete" style={{ color: 'red', fontSize: 20 }} />
-                                </TouchableOpacity>
+                                        style={styles.delBankBtn}
+                                        onPress={() => { handlBankDel(item.name) }}
+                                    >
+                                        <AntDesign name="delete" style={{ color: 'red', fontSize: 20 }} />
+                                    </TouchableOpacity>
                                 </View>
                                 
                                 <Text style={styles.textInBoard}><Text style={{ fontWeight: 'bold' }}>NAME OF BANK: </Text> {item.name}</Text>
@@ -137,59 +137,69 @@ const BlogScreen = ({navigation}) => {
                 style={styles.modal}
                 visible={modalVisible}
                 transparent={true}
-            >
+            ><KeyboardAvoidingView
+                        style={{ flex: 1 }}
+                        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                    >
                 <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        <Text style={styles.text}>NAME OF BANK</Text>
-                        <TextInput
-                            onChangeText={setBankName}
-                            value={bankName}
-                            style={styles.input}
-                        />
+                    
+                        <View style={styles.modalContent}>
 
-                        <Text style={styles.text}>AMOUNT</Text>
-                        <TextInput
-                            onChangeText={setSuma}
-                            value={suma}
-                            keyboardType="numeric"
-                            style={styles.input}
-                        />
+                        
 
-                        <Text style={styles.text}>MONTHLY INTEREST</Text>
-                        <TextInput
-                            onChangeText={setMonthPersent}
-                            value={monthPersent}
-                            keyboardType="numeric"
-                            style={styles.input}
-                        />
+                            <Text style={styles.text}>NAME OF BANK</Text>
+                            <TextInput
+                                onChangeText={setBankName}
+                                value={bankName}
+                                style={styles.input}
+                            />
 
-                        <Text style={styles.text}>HOW LONG (month)</Text>
-                        <TextInput
-                            onChangeText={setDeadline}
-                            value={deadline}
-                            keyboardType="numeric"
-                            style={styles.input}
-                        />
-                        <View style={{ alignItems: 'center' }}>
-                            <TouchableOpacity
-                                style={{ ...styles.saveBtn, marginTop: 29 }}
-                                activeOpacity={0.7}
-                                onPress={() => handlModalClose()}
-                            >
-                                <Text style={{ fontWeight: 'bold' }}>SAVE</Text>
-                            </TouchableOpacity>
-                        </View>
+                            <Text style={styles.text}>AMOUNT</Text>
+                            <TextInput
+                                onChangeText={setSuma}
+                                value={suma}
+                                keyboardType="numeric"
+                                style={styles.input}
+                            />
+
+                            <Text style={styles.text}>MONTHLY INTEREST</Text>
+                            <TextInput
+                                onChangeText={setMonthPersent}
+                                value={monthPersent}
+                                keyboardType="numeric"
+                                style={styles.input}
+                            />
+
+                            <Text style={styles.text}>HOW LONG (month)</Text>
+                            <TextInput
+                                onChangeText={setDeadline}
+                                value={deadline}
+                                keyboardType="numeric"
+                                style={styles.input}
+                            />
+                            <View style={{ alignItems: 'center' }}>
+                                <TouchableOpacity
+                                    style={{ ...styles.saveBtn, marginTop: 29 }}
+                                    activeOpacity={0.7}
+                                    onPress={() => handlModalClose()}
+                                >
+                                    <Text style={{ fontWeight: 'bold' }}>SAVE</Text>
+                                </TouchableOpacity>
+                            </View>
                        
 
-                        <Pressable
-                            style={{ position: 'absolute', right: 10, top: 10 }}
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <AntDesign name='closecircle' style={{ fontSize: 30, color: 'red' }} />
-                        </Pressable>
-                    </View>
-                </View>
+                            <Pressable
+                                style={{ position: 'absolute', right: 10, top: 10 }}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                <AntDesign name='closecircle' style={{ fontSize: 30, color: 'red' }} />
+                            </Pressable>
 
+                        </View>
+
+                   
+                </View>
+ </KeyboardAvoidingView>
 
             </Modal>
             
