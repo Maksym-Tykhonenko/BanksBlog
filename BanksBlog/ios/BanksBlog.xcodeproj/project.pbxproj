@@ -489,8 +489,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = NGN4XJ9QN5;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WJWT5J4AA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = BanksBlog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BanksBlog;
@@ -505,7 +505,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BanksBlog.MyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BanksBlog.myBanksBlog;
 				PRODUCT_NAME = BanksBlog;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -519,8 +519,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = NGN4XJ9QN5;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WJWT5J4AA;
 				INFOPLIST_FILE = BanksBlog/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = BanksBlog;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -534,7 +534,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BanksBlog.MyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BanksBlog.myBanksBlog;
 				PRODUCT_NAME = BanksBlog;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

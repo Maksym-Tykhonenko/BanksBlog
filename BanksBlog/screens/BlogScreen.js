@@ -78,7 +78,7 @@ const BlogScreen = ({navigation}) => {
 
             <ImageBackground
                 style={styles.backgroundImg}
-                source={require('../assets/gameElement/backgr.png')}
+                source={require('../assets/gameElement/bcgr3.jpeg')}
             >
                 
                 
@@ -119,7 +119,7 @@ const BlogScreen = ({navigation}) => {
                 style={styles.openModalBtn}
                 onPress={() => setModalVisible(!modalVisible)}
             >
-                <Entypo name="add-to-list" style={{ color: 'yellow', fontSize: 35 }} />
+                <Entypo name="add-to-list" style={{ color: '#103db1', fontSize: 35 }} />
             </Pressable>
             
             {/**BTN BACK */}
@@ -282,7 +282,7 @@ marginTop: 5
         //position: 'absolute',
     },
     textInBoard: {
-        color: '#fff',
+        color: '#103db1',
         fontSize: 20,
     },
     modal: {
@@ -298,7 +298,7 @@ marginTop: 5
     },
     modalContent: {
         width: 300, // Задайте ширину вікна за своїми потребами
-        backgroundColor: '#000',
+        backgroundColor: '#865c58',
         padding: 20,
         borderRadius: 10,
         borderColor: '#fff',

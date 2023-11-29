@@ -106,12 +106,22 @@ const HomeScreen = ({ navigation }) => {
             }})
     };
 
+    {/**
+<Image
+                                style={{ width: 220, height: 64, }}
+                                source={require('../assets/gameElement/USA.png')} />
+
+<Image
+                                style={{ width: 220, height: 64, }}
+                                source={require('../assets/gameElement/Europe.png')} />
+*/}
+
     return (
         <View style={styles.conteiner}>
             <ImageBackground
                 style={styles.backgroundImg}
                 resizeMode='cover'
-                source={require('../assets/gameElement/backgr.png')}
+                source={require('../assets/gameElement/bcgr3.jpeg')}
             >
                 <View style={{ marginTop: 20, paddingTop: 250, alignItems: 'center', }}>
                     
@@ -119,19 +129,17 @@ const HomeScreen = ({ navigation }) => {
                     <View>
                         <TouchableOpacity
                             onPress={() => navigation.navigate('USA Banks')}
-                            style={{ marginBottom: 20 }}>
-                            <Image
-                                style={{ width: 220, height: 64, }}
-                                source={require('../assets/gameElement/USA.png')} />
+                            style={{width: 200, height: 60, borderWidth: 2, borderColor: '#865c58',backgroundColor: '#865c58',  borderRadius: 10,alignItems: 'center', justifyContent: 'center',flexDirection: 'row', shadowColor: '#865c58', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84,  marginBottom: 20 }}>
+                            <Text style={{color: '#103db1', marginRight: 5, fontSize: 20}}>Usa</Text>
+                            <FontAwesome name="bank" style={{ color: '#103db1', fontSize: 40 }} />
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => navigation.navigate('Euro Banks')}
-                            style={{}}>
+                            style={{width: 200, height: 60, borderWidth: 2, borderColor: '#865c58',backgroundColor: '#865c58', borderRadius: 10,alignItems: 'center', justifyContent: 'center',flexDirection: 'row', shadowColor: '#865c58', shadowOffset: { width: 1, height: 1, }, shadowOpacity: 0.5, shadowRadius: 3.84, }}>
                         
-                            <Image
-                                style={{ width: 220, height: 64, }}
-                                source={require('../assets/gameElement/Europe.png')} />
+                             <Text style={{color: '#103db1', marginRight: 5, fontSize: 20}}>Europe</Text>
+                             <FontAwesome name="bank" style={{ color: '#103db1', fontSize: 40 }} />
                         </TouchableOpacity>
                         
                     </View>
@@ -143,28 +151,28 @@ const HomeScreen = ({ navigation }) => {
                         <TouchableOpacity
                             onPress={() => navigation.navigate('CreditCalculator')}
                             style={{ ...styles.colculyator, }}>
-                            <AntDesign name="calculator" style={{ color: '#fff', fontSize: 40 }} />
+                            <AntDesign name="calculator" style={{ color: '#103db1', fontSize: 40 }} />
                        
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => navigation.navigate('Blog')}
                             style={{ ...styles.blog, marginLeft: 40 }}>
-                            <FontAwesome5 name="blog" style={{ color: '#fff', fontSize: 40 }} />
+                            <FontAwesome5 name="blog" style={{ color: '#103db1', fontSize: 40 }} />
                        
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => navigation.navigate('News')}
                             style={{ marginLeft: 40 }}>
-                            <FontAwesome name="newspaper-o" style={{ color: '#fff', fontSize: 40 }} />
+                            <FontAwesome name="newspaper-o" style={{ color: '#103db1', fontSize: 40 }} />
                        
                         </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => setIsModalVisible(true)}
                             style={{ marginLeft: 40 }}>
-                            <MaterialCommunityIcons name='face-recognition' style={{ color: '#fff', fontSize: 35 }} />
+                            <MaterialCommunityIcons name='face-recognition' style={{ color: '#103db1', fontSize: 35 }} />
                        
                         </TouchableOpacity>
 
@@ -175,14 +183,14 @@ const HomeScreen = ({ navigation }) => {
                         transparent={false}
                         visible={isModalVisible}
                     >
-                        <SafeAreaView style={{ position: 'relative', flex: 1, paddingTop: 30, paddingHorizontal: 10, backgroundColor: '#000' }}>
+                        <SafeAreaView style={{ position: 'relative', flex: 1, paddingTop: 30, paddingHorizontal: 10, backgroundColor: '#865c58', }}>
                             <ScrollView>
                                 <KeyboardAvoidingView
                                     style={{ flex: 1 }}
                                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                                 >
                                 
-                                    <View>
+                                    <View style={{}}>
  
                                         {!username ? (
                                             <View><Text style={{ marginLeft: 5, marginBottom: 10, fontWeight: 'bold', fontSize: 25, color: '#fff' }}>Tipe name :</Text>

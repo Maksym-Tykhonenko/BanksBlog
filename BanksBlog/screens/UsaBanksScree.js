@@ -133,13 +133,13 @@ const UsaBanksScreen = ({ navigation }) => {
     return (
         <View style={styles.conteiner}>
             <ImageBackground
-                source={require('../assets/gameElement/backgr.png')}
+                source={require('../assets/gameElement/bcgr3.jpeg')}
                 style={styles.backgroundImg}
             >
                
 
                 <View style={styles.subConteiner}>
-                    <Text style={{ fontWeight: 'bold', fontSize: 30, marginBottom: 30, color: '#fff' }}>USA Banks: </Text>
+                    <Text style={{ fontWeight: 'bold', fontSize: 30, marginBottom: 30, color: '#103db1' }}>USA Banks: </Text>
                     
                     {/**allData list */}
                     <FlatList
@@ -150,7 +150,7 @@ const UsaBanksScreen = ({ navigation }) => {
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('BankDitailScreen', { bank: item })}
                                 style={{ ...styles.bank, position: 'relative' }}>
-                                <Text style={{ fontSize: 18, color: '#fff' }}>{item.name}</Text>
+                                <Text style={{ fontSize: 18, color: '#103db1' , fontWeight: 'bold'}}>{item.name}</Text>
                                 <TouchableOpacity
                                     onPress={() => hndlDelBanck(item.id)}
                                     activeOpacity={0.5}
@@ -176,7 +176,7 @@ const UsaBanksScreen = ({ navigation }) => {
                         }}
                         onPress={() => setAddBankModalIsVisibl(true)}
                     >
-                        <Ionicons name='add-circle-outline' style={{ fontSize: 35, color: 'yellow' }} />
+                        <Ionicons name='add-circle-outline' style={{ fontSize: 35, color: '#103db1' }} />
                     </TouchableOpacity>
 
                     {/** cлужебная кнопка ремув сторедж дата
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
         padding: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: '#36454f',
         borderRadius: 10,
         width: 300,
@@ -378,7 +378,7 @@ const styles = StyleSheet.create({
     },
     modalContent: {
         width: "100%", // Задайте ширину вікна за своїми потребами
-        backgroundColor: '#000',
+        backgroundColor: '#865c58',
         padding: 20,
         borderRadius: 10,
         borderColor: 'yellow',

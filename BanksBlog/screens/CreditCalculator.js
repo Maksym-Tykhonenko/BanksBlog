@@ -39,7 +39,7 @@ const CreditCalculator = ({navigation}) => {
 
             <ImageBackground
                 style={styles.backgroundImg}
-                source={require('../assets/gameElement/backgr.png')}
+                source={require('../assets/gameElement/bcgr3.jpeg')}
             >
                 <KeyboardAvoidingView
                     style={{ flex: 1 }}
@@ -49,7 +49,7 @@ const CreditCalculator = ({navigation}) => {
                     <ScrollView>
 
                         <View style={{ marginBottom: 20 }}>
-                            <Text style={styles.title}>LOAN AMOUNT <FontAwesome name="money" style={{ color: '#fff', fontSize: 30 }} /> :</Text>
+                            <Text style={styles.title}>LOAN AMOUNT <FontAwesome name="money" style={{ color: '#103db1', fontSize: 30 }} /> :</Text>
                             <TextInput
                                 style={styles.input}
                                 value={loanAmount}
@@ -163,19 +163,19 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
          borderRadius: 5,
          width: 200,
          height: 35,
-         borderColor: '#fff',
+         borderColor: '#103db1',
         paddingHorizontal: 10,
-        color: '#fff',
+        color: '#865c58',
          fontSize: 18
     },
     title: {
         fontSize: 24,
         marginBottom: 8,
-        color: '#fff',
+        color: '#103db1',
 
     }
 })
